@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv5waghmx0t4d"]
+
+[ext_resource type="Texture2D" uid="uid://dt6gth8q4yexw" path="res://flame.jpg" id="1_63rg5"]
+[ext_resource type="Script" path="res://Scenes/Ink.gd" id="1_s3qih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwx0v"]
+size = Vector2(128, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytiip"]
+size = Vector2(41, 27)
+
+[node name="Ink" type="Area2D"]
+script = ExtResource("1_s3qih")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(53.2625, 44.264)
+scale = Vector2(0.509, 0.544)
+texture = ExtResource("1_63rg5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(54, 45.5)
+shape = SubResource("RectangleShape2D_dwx0v")
+
+[node name="InkCore" type="RigidBody2D" parent="."]
+
+[node name="InkHitbox" type="CollisionShape2D" parent="InkCore"]
+position = Vector2(53, 38)
+shape = SubResource("RectangleShape2D_ytiip")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://qf2mafjrdwlj"]
+
+[ext_resource type="Script" path="res://Scenes/fp_1.gd" id="1_012vl"]
+[ext_resource type="Texture2D" uid="uid://dt6gth8q4yexw" path="res://flame.jpg" id="2_2smsl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xiwgg"]
+size = Vector2(94, 62)
+
+[node name="FP1" type="Area2D"]
+script = ExtResource("1_012vl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_2smsl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_xiwgg")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
