@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcrtwuyn648eq"]
+
+[ext_resource type="Texture2D" uid="uid://bdlgo2u373ghf" path="res://icon.svg" id="1_5bphg"]
+[ext_resource type="Script" path="res://Scripts/Blob.gd" id="1_txffg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsgse"]
+size = Vector2(32, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbuep"]
+size = Vector2(66, 63)
+
+[node name="Blob" type="CharacterBody2D"]
+position = Vector2(16, -97)
+script = ExtResource("1_txffg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-21, 53.5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_5bphg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-21, 53.5)
+shape = SubResource("RectangleShape2D_bsgse")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BlobArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlobArea"]
+position = Vector2(-21, 53.5)
+shape = SubResource("RectangleShape2D_cbuep")
+
+[connection signal="area_entered" from="BlobArea" to="." method="_on_blob_area_area_entered"]
+[connection signal="area_exited" from="BlobArea" to="." method="_on_blob_area_area_exited"]
+[connection signal="body_entered" from="BlobArea" to="." method="_on_blob_area_body_entered"]
+[connection signal="body_shape_entered" from="BlobArea" to="." method="_on_blob_area_body_shape_entered"]

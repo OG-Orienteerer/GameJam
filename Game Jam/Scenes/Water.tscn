@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyhi8fg7vi4ns"]
+
+[ext_resource type="Script" path="res://Scenes/Water.gd" id="1_lq3yc"]
+[ext_resource type="Texture2D" uid="uid://c2mf0mcb7kq0k" path="res://Water.jpg" id="1_ukh0g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_laic3"]
+size = Vector2(28, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifcil"]
+size = Vector2(10, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pue0"]
+size = Vector2(38, 38)
+
+[node name="Water" type="StaticBody2D"]
+script = ExtResource("1_lq3yc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_ukh0g")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_laic3")
+disabled = true
+
+[node name="WaterArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterArea"]
+shape = SubResource("RectangleShape2D_ifcil")
+
+[node name="FreezeAura" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FreezeAura"]
+shape = SubResource("RectangleShape2D_2pue0")
+
+[connection signal="area_entered" from="WaterArea" to="." method="_on_water_area_area_entered"]
+[connection signal="area_exited" from="WaterArea" to="." method="_on_water_area_area_exited"]
+[connection signal="area_entered" from="FreezeAura" to="." method="_on_freeze_aura_area_entered"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://r72ugulyplq8"]
+
+[ext_resource type="Script" path="res://Steel_Block.gd" id="1_ucq1h"]
+[ext_resource type="Texture2D" uid="uid://24b22w04ifi5" path="res://Metal.jpg" id="2_yplkt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsew1"]
+size = Vector2(113, 115)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu15m"]
+size = Vector2(147, 147)
+
+[node name="Steel_Block" type="StaticBody2D"]
+script = ExtResource("1_ucq1h")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_xsew1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yplkt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_iu15m")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

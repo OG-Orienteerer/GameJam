@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs3eoxwh70gww"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_ut76d"]
+[ext_resource type="Texture2D" uid="uid://dt6gth8q4yexw" path="res://flame.jpg" id="2_cpm2e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnshg"]
+size = Vector2(31, 49.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rqin"]
+size = Vector2(93, 75)
+
+[node name="Flame" type="CharacterBody2D"]
+script = ExtResource("1_ut76d")
+jump_force = 800
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-27.25, -28)
+scale = Vector2(0.238281, 0.390625)
+texture = ExtResource("2_cpm2e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-27.5, -28.25)
+shape = SubResource("RectangleShape2D_vnshg")
+
+[node name="FlameArea" type="Area2D" parent="."]
+light_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlameArea"]
+position = Vector2(-27, -27.5)
+shape = SubResource("RectangleShape2D_5rqin")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="area_entered" from="FlameArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="FlameArea" to="." method="_on_flame_area_area_exited"]
+[connection signal="area_shape_entered" from="FlameArea" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="FlameArea" to="." method="_on_area_2d_body_entered"]

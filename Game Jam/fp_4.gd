@@ -1,0 +1,18 @@
+extends Area2D
+
+var Presence
+
+func _physics_process(delta):
+	if Presence==1 && Input.is_action_just_pressed("flame_power"):
+		hide()
+		#print("claimed")
+
+func _on_area_entered(area):
+	if area.name=="FlameArea":
+		Presence=1
+	#print(area.name)
+
+func _on_area_exited(area):
+	if area.name=="FlameArea":
+		Presence=0
+	#print("gone")

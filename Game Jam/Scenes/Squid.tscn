@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://v2uvc74ca65p"]
+
+[ext_resource type="Script" path="res://Scenes/Squid.gd" id="1_bco6n"]
+[ext_resource type="Texture2D" uid="uid://cu7enle7nf4b8" path="res://download.png" id="1_nywoe"]
+[ext_resource type="PackedScene" uid="uid://cv5waghmx0t4d" path="res://Scenes/Ink.tscn" id="2_af7x2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvm71"]
+size = Vector2(101, 81)
+
+[node name="Squid" type="CharacterBody2D"]
+position = Vector2(60, 0)
+script = ExtResource("1_bco6n")
+projectile = ExtResource("2_af7x2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(74, 4)
+scale = Vector2(0.265086, 0.241935)
+texture = ExtResource("1_nywoe")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-1, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(76.5, 5.5)
+shape = SubResource("RectangleShape2D_cvm71")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

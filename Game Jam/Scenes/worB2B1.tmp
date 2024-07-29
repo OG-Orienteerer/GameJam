@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://byws3elv14kxx"]
+
+[ext_resource type="PackedScene" uid="uid://bs3eoxwh70gww" path="res://Scenes/player.tscn" id="1_edjd4"]
+[ext_resource type="PackedScene" uid="uid://dcrtwuyn648eq" path="res://Scenes/Blob.tscn" id="2_75vha"]
+[ext_resource type="PackedScene" uid="uid://cu176v3htfobj" path="res://Scenes/darkness.tscn" id="3_dtnt6"]
+[ext_resource type="PackedScene" uid="uid://qf2mafjrdwlj" path="res://Scenes/fp_1.tscn" id="4_kr5a2"]
+[ext_resource type="PackedScene" uid="uid://v2uvc74ca65p" path="res://Scenes/Squid.tscn" id="4_ret7k"]
+[ext_resource type="PackedScene" uid="uid://bra0jq1nq2til" path="res://Scenes/wooden_floor.tscn" id="7_85ro7"]
+[ext_resource type="PackedScene" uid="uid://cyhi8fg7vi4ns" path="res://Scenes/Water.tscn" id="7_tw1jt"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_1rlsu"]
+size = Vector2(1000, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysk70"]
+size = Vector2(1000.5, 98.5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_s3ran"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03fpk"]
+size = Vector2(137, 111)
+
+[node name="World" type="Node2D"]
+position = Vector2(180, -40)
+
+[node name="FP1" parent="." instance=ExtResource("4_kr5a2")]
+position = Vector2(-377, 642)
+
+[node name="Flame" parent="." instance=ExtResource("1_edjd4")]
+position = Vector2(-42, 406)
+
+[node name="Blob" parent="." instance=ExtResource("2_75vha")]
+position = Vector2(-183, 269)
+
+[node name="Darkness" parent="." instance=ExtResource("3_dtnt6")]
+position = Vector2(566, 348)
+
+[node name="Squid" parent="." instance=ExtResource("4_ret7k")]
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(459, 536)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(12, 84)
+mesh = SubResource("QuadMesh_1rlsu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(12.25, 84.25)
+shape = SubResource("RectangleShape2D_ysk70")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(-176, 658)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform2"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(12, 84)
+mesh = SubResource("QuadMesh_1rlsu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(12, 83)
+shape = SubResource("RectangleShape2D_ysk70")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(795, 450)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Wall"]
+modulate = Color(1, 0.25098, 1, 1)
+position = Vector2(-3.8147e-06, 72)
+scale = Vector2(136, 109.5)
+mesh = SubResource("QuadMesh_s3ran")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-0.5, 72.5)
+shape = SubResource("RectangleShape2D_03fpk")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(-94, 442)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Wall2"]
+modulate = Color(1, 0.25098, 1, 1)
+position = Vector2(-3.8147e-06, 72)
+scale = Vector2(136, 109.5)
+mesh = SubResource("QuadMesh_s3ran")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(-0.5, 72.5)
+shape = SubResource("RectangleShape2D_03fpk")
+
+[node name="Wooden_Floor" parent="." instance=ExtResource("7_85ro7")]
+position = Vector2(-769, 742)
+
+[node name="WaterArea" parent="." instance=ExtResource("7_tw1jt")]
+position = Vector2(-557, 564)
