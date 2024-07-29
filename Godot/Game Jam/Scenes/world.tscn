@@ -75,3 +75,4 @@ mesh = SubResource("QuadMesh_s3ran")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
 position = Vector2(-0.5, 72.5)
 shape = SubResource("RectangleShape2D_03fpk")
+

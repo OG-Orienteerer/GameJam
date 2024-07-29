@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cglw4vy0lksjo"]
+[gd_scene load_steps=2 format=3 uid="uid://cglw4vy0lksjo"]
 
 [ext_resource type="Script" path="res://Scenes/Settings menu.gd" id="1_1qf68"]
-[ext_resource type="AudioStream" uid="uid://c8yq6r1wcjkni" path="res://Assets/Audio/vogovu (1).wav" id="2_qjcyr"]
 
 [node name="Settings Menu" type="Control"]
 layout_mode = 3
@@ -11,8 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1qf68")
-
-bus_name = "Master"
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -78,22 +75,4 @@ max_value = 1.0
 step = 0.001
 ticks_on_borders = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_qjcyr")
-autoplay = true
-
-[node name="MarginContainer3" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="ReturnBtn" type="Button" parent="MarginContainer3"]
-layout_mode = 2
-text = "Return to Main Menu"
-
 [connection signal="value_changed" from="MarginContainer/Buttons/Master_Volume" to="." method="_on_volume_value_changed"]
-[connection signal="button_down" from="MarginContainer3/ReturnBtn" to="." method="_on_return_btn_button_down"]

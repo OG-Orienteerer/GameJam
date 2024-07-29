@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c8yq6r1wcjkni"
+path="res://.godot/imported/vogovu (1).wav-ae29ef0449284d96073dbee8f0a79cb1.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/vogovu (1).wav"
+dest_files=["res://.godot/imported/vogovu (1).wav-ae29ef0449284d96073dbee8f0a79cb1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

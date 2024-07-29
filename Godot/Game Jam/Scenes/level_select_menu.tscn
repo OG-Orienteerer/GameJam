@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2il2brvn4x2u"]
+
+[ext_resource type="Script" path="res://Scripts/levelmanagement.gd" id="1_hrvfk"]
+[ext_resource type="PackedScene" uid="uid://cwqdhtvo5o6ha" path="res://Scenes/lvl_btn.tscn" id="1_vvil5"]
+[ext_resource type="AudioStream" uid="uid://c8yq6r1wcjkni" path="res://Assets/Audio/vogovu (1).wav" id="3_mlnr3"]
+
+[node name="Level Select Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hrvfk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="Lvl_btn" parent="MarginContainer/GridContainer" instance=ExtResource("1_vvil5")]
+custom_minimum_size = Vector2(225, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="Lvl_btn2" parent="MarginContainer/GridContainer" instance=ExtResource("1_vvil5")]
+custom_minimum_size = Vector2(225, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="Lvl_btn3" parent="MarginContainer/GridContainer" instance=ExtResource("1_vvil5")]
+custom_minimum_size = Vector2(225, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="Lvl_btn4" parent="MarginContainer/GridContainer" instance=ExtResource("1_vvil5")]
+custom_minimum_size = Vector2(225, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="Lvl_btn5" parent="MarginContainer/GridContainer" instance=ExtResource("1_vvil5")]
+custom_minimum_size = Vector2(225, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="Lvl_btn6" parent="MarginContainer/GridContainer" instance=ExtResource("1_vvil5")]
+custom_minimum_size = Vector2(225, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="Lvl_btn7" parent="MarginContainer/GridContainer" instance=ExtResource("1_vvil5")]
+custom_minimum_size = Vector2(225, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="Lvl_btn8" parent="MarginContainer/GridContainer" instance=ExtResource("1_vvil5")]
+custom_minimum_size = Vector2(225, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="Lvl_btn9" parent="MarginContainer/GridContainer" instance=ExtResource("1_vvil5")]
+custom_minimum_size = Vector2(225, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="Lvl_btn10" parent="MarginContainer/GridContainer" instance=ExtResource("1_vvil5")]
+custom_minimum_size = Vector2(225, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="exit Button" type="Button" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+text = "Return to main menu"
+vertical_icon_alignment = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mlnr3")
+autoplay = true
+
+[connection signal="button_down" from="MarginContainer/MarginContainer/exit Button" to="." method="_on_exit_button_button_down"]
