@@ -73,6 +73,7 @@ func _on_area_2d_body_entered(body):
 		#print("hit")
 		position.x=Chex
 		position.y=Chey
+	
 
 
 

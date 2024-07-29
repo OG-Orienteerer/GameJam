@@ -4,31 +4,33 @@
 [ext_resource type="Script" path="res://Scripts/Blob.gd" id="1_txffg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bsgse"]
-size = Vector2(91, 81)
+size = Vector2(32, 33)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_owfi7"]
-size = Vector2(125, 127)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbuep"]
+size = Vector2(66, 63)
 
 [node name="Blob" type="CharacterBody2D"]
 position = Vector2(16, -97)
 script = ExtResource("1_txffg")
-jump_force = 800
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-21, 53.5)
-scale = Vector2(0.671875, 0.570313)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_5bphg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-18.5, 54.5)
+position = Vector2(-21, 53.5)
 shape = SubResource("RectangleShape2D_bsgse")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="BlobArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlobArea"]
-position = Vector2(-21, 54)
-shape = SubResource("RectangleShape2D_owfi7")
+position = Vector2(-21, 53.5)
+shape = SubResource("RectangleShape2D_cbuep")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[connection signal="body_entered" from="BlobArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="BlobArea" to="." method="_on_blob_area_area_entered"]
+[connection signal="area_exited" from="BlobArea" to="." method="_on_blob_area_area_exited"]
+[connection signal="body_entered" from="BlobArea" to="." method="_on_blob_area_body_entered"]
+[connection signal="body_shape_entered" from="BlobArea" to="." method="_on_blob_area_body_shape_entered"]

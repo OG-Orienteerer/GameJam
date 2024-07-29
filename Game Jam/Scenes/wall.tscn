@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmu41ado5vrdu"]
+
+[ext_resource type="Texture2D" uid="uid://1tui5sfh1m43" path="res://Brick.jpg" id="1_74xxv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn6ya"]
+size = Vector2(18, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjdgr"]
+size = Vector2(22, 18.25)
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dn6ya")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_74xxv")
+
+[node name="WallArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallArea"]
+position = Vector2(0, 0.125)
+shape = SubResource("RectangleShape2D_rjdgr")
