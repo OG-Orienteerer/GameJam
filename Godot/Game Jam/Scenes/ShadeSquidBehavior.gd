@@ -1,28 +1,31 @@
-extends CharacterBody2D
+extends Node2D
 
+# Variables
+var player: Node2D
+var projectile_scene: PackedScene
+var launch_interval: float = 2.0
+var time_since_last_launch: float = 0.0
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+# Nodes
+onready var launch_point: Position2D = $LaunchPoint
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+func _ready():
+    # Replace 'res://path_to_your_projectile_scene.tscn' with the actual path to your projectile scene
+    projectile_scene = preload("res://path_to_your_projectile_scene.tscn")
+    # Get the player node, assuming it's named "Player" in the scene tree
+    player = get_node("/root/Main/Player")
 
+func _process(delta):
+    time_since_last_launch += delta
+    if time_since_last_launch >= launch_interval:
+        launch_projectile()
+        time_since_last_launch = 0.0
 
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
+func launch_projectile():
+    var projectile = projectile_scene.instance() as KinematicBody2D
+    get_parent().add_child(projectile)
+    projectile.position = launch_point.global_position
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
+    # Calculate direction to the player
+    var direction = (player.global_position - projectile.position).normalized()
+    projectile.set_direction(direction)
