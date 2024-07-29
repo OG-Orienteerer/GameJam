@@ -31,6 +31,36 @@ var levels = {
 		"unlocks" : "placeholder4",
 		"completed" : false,
 	},
+		"res://Scenes/Levels/level_6.tscn" : {
+		"name" : "placeholder4",
+		"unlocked" : false,
+		"unlocks" : "placeholder5",
+		"completed" : false,
+	},
+		"res://Scenes/Levels/level_7.tscn" : {
+		"name" : "placeholder5",
+		"unlocked" : false,
+		"unlocks" : "placeholder6",
+		"completed" : false,
+	},
+		"res://Scenes/Levels/level_8.tscn" : {
+		"name" : "placeholder6",
+		"unlocked" : false,
+		"unlocks" : "placeholder7",
+		"completed" : false,
+	},
+		"res://Scenes/Levels/level_9.tscn" : {
+		"name" : "placeholder7",
+		"unlocked" : false,
+		"unlocks" : "placeholder8",
+		"completed" : false,
+	},
+		"res://Scenes/Levels/level_10.tscn" : {
+		"name" : "placeholder8",
+		"unlocked" : false,
+		"unlocks" : "placeholder9",
+		"completed" : false,
+	},
 }
 
 
