@@ -1,3 +1,48 @@
-[gd_scene format=3 uid="uid://ct01l41nmpety"]
+[gd_scene load_steps=7 format=3 uid="uid://ct01l41nmpety"]
 
-[node name="Charged_Trapdoor_Core" type="RigidBody2D"]
+[ext_resource type="Script" path="res://Scenes/charged_trapdoor.gd" id="1_3c8o2"]
+[ext_resource type="Texture2D" uid="uid://bsg38ma2r61mx" path="res://Trapdoor.jpg" id="2_jw8dn"]
+[ext_resource type="Texture2D" uid="uid://c3qpff3om8uc" path="res://PressurePlate.png" id="3_lhaeg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxbts"]
+size = Vector2(221, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isxgy"]
+size = Vector2(56, 77.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d65lg"]
+size = Vector2(59.5, 54)
+
+[node name="Charged_Trapdoor_Core" type="StaticBody2D"]
+position = Vector2(46, 19)
+script = ExtResource("1_3c8o2")
+
+[node name="Trapdoor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trapdoor"]
+position = Vector2(72.375, -19.75)
+shape = SubResource("RectangleShape2D_lxbts")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trapdoor"]
+position = Vector2(72.375, -20.75)
+scale = Vector2(0.75, 0.25)
+texture = ExtResource("2_jw8dn")
+
+[node name="Sensor" type="Area2D" parent="."]
+position = Vector2(-67.875, 62.125)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor"]
+position = Vector2(18, -89)
+shape = SubResource("RectangleShape2D_isxgy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-51.875, -22.875)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_lhaeg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-52.125, -19.875)
+shape = SubResource("RectangleShape2D_d65lg")
+
+[connection signal="area_entered" from="Sensor" to="." method="_on_sensor_area_entered"]
+[connection signal="area_exited" from="Sensor" to="." method="_on_sensor_area_exited"]

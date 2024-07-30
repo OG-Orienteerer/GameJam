@@ -51,6 +51,10 @@ func _physics_process(delta):
 		Freeze=1
 		print("SuperSuit")
 	
+	if ChargeA==1 && Input.is_action_just_pressed("blob_power"):
+		Charge=1
+		print("ZAAAP")
+	
 	
 		
 

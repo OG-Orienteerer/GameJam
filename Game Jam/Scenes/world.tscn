@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://byws3elv14kxx"]
+[gd_scene load_steps=22 format=3 uid="uid://byws3elv14kxx"]
 
 [ext_resource type="PackedScene" uid="uid://ch380h1iergdm" path="res://fp_2.tscn" id="2_6kmuu"]
 [ext_resource type="PackedScene" uid="uid://cu176v3htfobj" path="res://Scenes/darkness.tscn" id="3_dtnt6"]
@@ -13,6 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://cvn6vvs1mdyeh" path="res://Scenes/bp_2.tscn" id="12_01iyo"]
 [ext_resource type="PackedScene" uid="uid://bnrtccllcche1" path="res://Scenes/bp_1.tscn" id="12_t3vsp"]
 [ext_resource type="PackedScene" uid="uid://cl7by2bmy3gj7" path="res://Scenes/Wooden_Barricade.tscn" id="13_at24e"]
+[ext_resource type="PackedScene" uid="uid://c2rgir6u7ct3i" path="res://Scenes/bp_3.tscn" id="14_1ept4"]
+[ext_resource type="PackedScene" uid="uid://dhrblul0wepcf" path="res://Scenes/charged_door.tscn" id="15_epafp"]
+[ext_resource type="PackedScene" uid="uid://dslplrld3mkd2" path="res://Scenes/charged_platform.tscn" id="16_ajaoc"]
+[ext_resource type="PackedScene" uid="uid://ct01l41nmpety" path="res://Scenes/charged_trapdoor.tscn" id="16_stdjr"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_1rlsu"]
 size = Vector2(1000, 100)
@@ -26,42 +30,42 @@ size = Vector2(1000.5, 98.5)
 size = Vector2(137, 111)
 
 [node name="World" type="Node2D"]
-position = Vector2(-197, -185)
+position = Vector2(-193, -109)
 scale = Vector2(2, 2)
 
 [node name="FP1" parent="." instance=ExtResource("4_kr5a2")]
-position = Vector2(-552, 877)
+position = Vector2(-523, 554)
 
 [node name="FP2" parent="." instance=ExtResource("2_6kmuu")]
-position = Vector2(-394, 893)
+position = Vector2(-365, 570)
 
 [node name="FP3" parent="." instance=ExtResource("3_gxd4a")]
-position = Vector2(-272, 893)
+position = Vector2(-243, 570)
 
 [node name="FP4" parent="." instance=ExtResource("4_2kd3f")]
-position = Vector2(-140, 892)
+position = Vector2(-111, 569)
 
 [node name="Darkness" parent="." instance=ExtResource("3_dtnt6")]
 show_behind_parent = true
-position = Vector2(675, 1023)
+position = Vector2(704, 700)
 
 [node name="Squid" parent="." instance=ExtResource("4_ret7k")]
-position = Vector2(125, 1024)
+position = Vector2(154, 701)
 
-[node name="Platform" type="StaticBody2D" parent="."]
-position = Vector2(459, 536)
+[node name="Tile2" type="StaticBody2D" parent="."]
+position = Vector2(488, 213)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Tile2"]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(12, 84)
 mesh = SubResource("QuadMesh_1rlsu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile2"]
 position = Vector2(12.25, 84.25)
 shape = SubResource("RectangleShape2D_ysk70")
 
 [node name="Platform2" type="StaticBody2D" parent="."]
-position = Vector2(-176, 658)
+position = Vector2(-147, 335)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Platform2"]
 modulate = Color(0, 0, 0, 1)
@@ -73,7 +77,7 @@ position = Vector2(12, 83)
 shape = SubResource("RectangleShape2D_ysk70")
 
 [node name="Wall" type="StaticBody2D" parent="."]
-position = Vector2(423, 797.5)
+position = Vector2(356, 114)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Wall"]
 modulate = Color(1, 0.25098, 1, 1)
@@ -85,39 +89,51 @@ mesh = SubResource("QuadMesh_s3ran")
 position = Vector2(-0.5, 72.5)
 shape = SubResource("RectangleShape2D_03fpk")
 
-[node name="Wall2" type="StaticBody2D" parent="."]
-position = Vector2(1203, 825)
+[node name="Tile" type="StaticBody2D" parent="."]
+position = Vector2(955, 118)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Wall2"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Tile"]
 modulate = Color(1, 0.25098, 1, 1)
 position = Vector2(-3.8147e-06, 72)
 scale = Vector2(136, 109.5)
 mesh = SubResource("QuadMesh_s3ran")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile"]
 position = Vector2(-0.5, 72.5)
 shape = SubResource("RectangleShape2D_03fpk")
 
 [node name="Wooden_Floor" parent="." instance=ExtResource("7_85ro7")]
-position = Vector2(-769, 742)
+position = Vector2(-740, 419)
 
 [node name="WaterArea" parent="." instance=ExtResource("7_tw1jt")]
 show_behind_parent = true
-position = Vector2(326.5, 530.5)
+position = Vector2(650, 539.5)
 scale = Vector2(2, 2)
 
 [node name="Steel_Block" parent="." instance=ExtResource("11_i5pxk")]
-position = Vector2(912, 861)
+position = Vector2(941, 538)
 
 [node name="Wall3" parent="." instance=ExtResource("11_3oixg")]
-position = Vector2(-818.5, 508)
+position = Vector2(-789.5, 185)
 scale = Vector2(2, 20)
 
 [node name="BP1" parent="." instance=ExtResource("12_t3vsp")]
-position = Vector2(-623, 639.5)
+position = Vector2(-594, 316.5)
 
 [node name="BP2" parent="." instance=ExtResource("12_01iyo")]
-position = Vector2(83, 524.5)
+position = Vector2(-496, 318.5)
 
 [node name="Wooden_Barricade" parent="." instance=ExtResource("13_at24e")]
-position = Vector2(-764.5, 893)
+position = Vector2(-735.5, 570)
+
+[node name="BP3" parent="." instance=ExtResource("14_1ept4")]
+position = Vector2(222, 196.5)
+
+[node name="Charged_Door_Core" parent="." instance=ExtResource("15_epafp")]
+position = Vector2(894.5, 769.5)
+
+[node name="Charged_Trapdoor_Core" parent="." instance=ExtResource("16_stdjr")]
+position = Vector2(-323, 1069)
+
+[node name="Charged_Platform_Core" parent="." instance=ExtResource("16_ajaoc")]
+position = Vector2(526, 176)
