@@ -1,3 +1,40 @@
-[gd_scene format=3 uid="uid://dslplrld3mkd2"]
+[gd_scene load_steps=6 format=3 uid="uid://dslplrld3mkd2"]
 
-[node name="Charged_Platform_Core" type="RigidBody2D"]
+[ext_resource type="Script" path="res://Scenes/charged_platform.gd" id="1_2n2fo"]
+[ext_resource type="Texture2D" uid="uid://bn6fejstha1wk" path="res://Platform.png" id="2_b6sfq"]
+[ext_resource type="Texture2D" uid="uid://c3qpff3om8uc" path="res://PressurePlate.png" id="3_b2qg1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3o0k"]
+size = Vector2(154, 80.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e47dg"]
+size = Vector2(151.5, 60.5)
+
+[node name="Charged_Platform_Core" type="CharacterBody2D"]
+script = ExtResource("1_2n2fo")
+
+[node name="Sensor" type="Area2D" parent="."]
+position = Vector2(51.125, -34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor"]
+position = Vector2(-53.125, 54.875)
+shape = SubResource("RectangleShape2D_b3o0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.875, 30)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_b2qg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.75, 30.75)
+shape = SubResource("RectangleShape2D_e47dg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-1, 20)
+scale = Vector2(0.5, 0.25)
+texture = ExtResource("2_b6sfq")
+
+[connection signal="area_entered" from="Sensor" to="." method="_on_sensor_area_entered"]
+[connection signal="area_exited" from="Sensor" to="." method="_on_sensor_area_exited"]
+[connection signal="body_entered" from="Sensor" to="." method="_on_sensor_body_entered"]
+[connection signal="body_exited" from="Sensor" to="." method="_on_sensor_body_exited"]
